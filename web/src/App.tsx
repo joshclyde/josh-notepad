@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { ListOfNotes } from "./components/ListOfNotes/ListOfNotes";
-import { NoteView } from "./components/NoteView/NoteView";
+import { ReadNote } from "./components/ReadNote/ReadNote";
 import { getNotes } from "./database";
 import { type Note } from "@josh-notepad/types";
+import { WriteNote } from "./components/WriteNote/WriteNote";
 
 export const App = () => {
   const [currentNoteId, setCurrentNoteId] = useState<string | undefined>(
@@ -13,6 +14,8 @@ export const App = () => {
   const [notes, setNotes] = useState<undefined | Record<string, Note>>(
     undefined,
   );
+
+  const [noteView, setNoteView] = useState<"read" | "write">("read");
 
   useEffect(() => {
     (async () => {
@@ -34,10 +37,22 @@ export const App = () => {
           <ListOfNotes notes={notes} setCurrentNoteId={setCurrentNoteId} />
         </div>
       ) : null}
-      {currentNoteId ? (
+      {currentNoteId && noteView === "read" ? (
         <>
-          <button onClick={() => setCurrentNoteId(undefined)}>Back</button>
-          <NoteView note={notes[currentNoteId]}></NoteView>
+          <div>
+            <button onClick={() => setCurrentNoteId(undefined)}>Back</button>
+            <button onClick={() => setNoteView("write")}>Edit</button>
+          </div>
+          <ReadNote note={notes[currentNoteId]}></ReadNote>
+        </>
+      ) : null}
+      {currentNoteId && noteView === "write" ? (
+        <>
+          <div>
+            <button onClick={() => setCurrentNoteId(undefined)}>Back</button>
+            <button onClick={() => setNoteView("write")}>Edit</button>
+          </div>
+          <WriteNote note={notes[currentNoteId]} key={currentNoteId} />
         </>
       ) : null}
     </>
