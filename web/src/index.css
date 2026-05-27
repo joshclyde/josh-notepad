@@ -16,4 +16,22 @@
   --pink-color: #ff79c6;
 }
 
+@theme inline {
+  --color-background: var(--background-color);
+  --color-current-line: var(--current-line-color);
+  --color-selection: var(--selection-color);
+  --color-foreground: var(--foreground-color);
+  --color-comment: var(--comment-color);
+  --color-red: var(--red-color);
+  --color-orange: var(--orange-color);
+  --color-yellow: var(--yellow-color);
+  --color-green: var(--green-color);
+  --color-cyan: var(--cyan-color);
+  --color-purple: var(--purple-color);
+  --color-pink: var(--pink-color);
+}
 
+body {
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+}

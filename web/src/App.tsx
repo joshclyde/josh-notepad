@@ -33,7 +33,8 @@ export const App = () => {
   return (
     <>
       {!currentNoteId ? (
-        <div className="flex flex-row">
+        <div>
+          <h1>List of Notes</h1>
           <ListOfNotes notes={notes} setCurrentNoteId={setCurrentNoteId} />
         </div>
       ) : null}
