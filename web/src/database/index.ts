@@ -1,8 +1,6 @@
-export interface Note {
-  id: string;
-  title: string;
-  content: string;
-}
+import type { Note } from "@josh-notepad/types";
+
+export type { Note };
 
 export const testData: Array<Note> = [
   {
@@ -21,3 +19,5 @@ export const testData: Array<Note> = [
     content: "baz baz baz",
   },
 ];
+
+export const getNotes = () => {};
