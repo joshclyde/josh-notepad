@@ -66,8 +66,14 @@ export const App = () => {
       {currentNoteId && noteView === "write" ? (
         <>
           <div>
-            <button onClick={() => setCurrentNoteId(undefined)}>Back</button>
-            <button onClick={() => setNoteView("write")}>Edit</button>
+            <button
+              onClick={() => {
+                setCurrentNoteId(undefined);
+                setNoteView("read");
+              }}
+            >
+              Back
+            </button>
           </div>
           <WriteNote note={notes[currentNoteId]} key={currentNoteId} />
         </>
