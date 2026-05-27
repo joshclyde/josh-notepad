@@ -30,9 +30,17 @@ export const WriteNote = ({
   };
 
   return (
-    <div>
-      <input value={title} onChange={handleTitleChange} />
-      <textarea value={content} onChange={handleContentChange} />
+    <div className="flex flex-col">
+      <input
+        value={title}
+        onChange={handleTitleChange}
+        className="text-green border-comment rounded-sm border"
+      />
+      <textarea
+        value={content}
+        onChange={handleContentChange}
+        className="border-comment rounded-sm border"
+      />
     </div>
   );
 };

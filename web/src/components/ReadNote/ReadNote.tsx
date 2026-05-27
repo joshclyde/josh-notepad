@@ -3,7 +3,7 @@ import type { Note } from "@josh-notepad/types";
 export const ReadNote = ({ note }: { note: Note }) => {
   return (
     <div>
-      <div>{note.title}</div>
+      <h1 className="text-green">{note.title}</h1>
       <div>{note.content}</div>
     </div>
   );
