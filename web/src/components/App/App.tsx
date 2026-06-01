@@ -76,7 +76,6 @@ export const App = () => {
     <>
       {!currentNoteId ? (
         <div>
-          <h1>List of Notes</h1>
           <button onClick={handleAddNewNote}>Add new note</button>
           <button onClick={() => setView("editor")}>Look at editor</button>
           <ListOfNotes notes={notes} setCurrentNoteId={setCurrentNoteId} />

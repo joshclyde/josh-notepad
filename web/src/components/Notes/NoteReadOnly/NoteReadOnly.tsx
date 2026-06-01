@@ -10,8 +10,10 @@ import { useMemo } from "react";
 
 export function ReadOnlyEditor({
   editorState,
+  className,
 }: {
   editorState: SerializedEditorState;
+  className?: string;
 }) {
   const initialConfig = useMemo(
     (): InitialConfigType => ({
@@ -26,7 +28,8 @@ export function ReadOnlyEditor({
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <div className="border border-purple p-2 m-2 rounded-md">
+      {/* <div className="border border-purple p-2 m-2 rounded-md"> */}
+      <div className={className}>
         <RichTextPlugin
           contentEditable={<ContentEditable className="editor-read-only" />}
           placeholder={null}
