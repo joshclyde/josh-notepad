@@ -1,5 +1,5 @@
-import { Note } from "@josh-notepad/types";
+import { NoteSerialized } from "@josh-notepad/types";
 
 export interface Database {
-  notes: Record<string, Note>;
+  notes: Record<string, NoteSerialized>;
 }

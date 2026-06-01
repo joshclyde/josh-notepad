@@ -1,8 +1,8 @@
-import type { Note } from "@josh-notepad/types";
+import type { NoteSerialized } from "@josh-notepad/types";
 
 const BASE_URL = "http://localhost:3001";
 
-export const getNotes = async (): Promise<Note[]> => {
+export const getNotes = async (): Promise<NoteSerialized[]> => {
   const res = await fetch(`${BASE_URL}/notes`);
   return res.json();
 };
@@ -10,7 +10,7 @@ export const getNotes = async (): Promise<Note[]> => {
 export const createNote = async (
   title: string,
   content: string,
-): Promise<Note> => {
+): Promise<NoteSerialized> => {
   const res = await fetch(`${BASE_URL}/notes`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -19,11 +19,11 @@ export const createNote = async (
   return res.json();
 };
 
-export const updateNote = async (
-  id: string,
-  title: string,
-  content: string,
-): Promise<Note> => {
+export const updateNote = async ({
+  id,
+  title,
+  content,
+}: NoteSerialized): Promise<NoteSerialized> => {
   const res = await fetch(`${BASE_URL}/notes/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },

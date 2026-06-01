@@ -3,18 +3,20 @@ import "./App.css";
 import { ListOfNotes } from "./components/ListOfNotes/ListOfNotes";
 import { ReadNote } from "./components/ReadNote/ReadNote";
 import { getNotes, createNote } from "./database";
-import { type Note } from "@josh-notepad/types";
+import { type NoteSerialized } from "@josh-notepad/types";
 import { WriteNote } from "./components/WriteNote/WriteNote";
+import { NoteEditor } from "./components/NoteEditor/NoteEditor";
 
 export const App = () => {
   const [currentNoteId, setCurrentNoteId] = useState<string | undefined>(
     undefined,
   );
 
-  const [notes, setNotes] = useState<undefined | Record<string, Note>>(
-    undefined,
-  );
+  const [notes, setNotes] = useState<
+    undefined | Record<string, NoteSerialized>
+  >(undefined);
 
+  const [view, setView] = useState<"home" | "editor">("home");
   const [noteView, setNoteView] = useState<"read" | "write">("read");
 
   useEffect(() => {
@@ -45,12 +47,17 @@ export const App = () => {
     return <div>Creating new note.</div>;
   }
 
+  if (view === "editor") {
+    return <NoteEditor />;
+  }
+
   return (
     <>
       {!currentNoteId ? (
         <div>
           <h1>List of Notes</h1>
           <button onClick={handleAddNewNote}>Add new note</button>
+          <button onClick={() => setView("editor")}>Look at editor</button>
           <ListOfNotes notes={notes} setCurrentNoteId={setCurrentNoteId} />
         </div>
       ) : null}

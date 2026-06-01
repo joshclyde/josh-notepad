@@ -2,6 +2,9 @@
   "name": "@josh-notepad/types",
   "version": "1.0.0",
   "types": "./index.d.ts",
+  "dependencies": {
+    "lexical": "^0.44.0"
+  },
   "exports": {
     ".": {
       "types": "./index.d.ts",

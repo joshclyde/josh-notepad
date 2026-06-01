@@ -1,10 +1,11 @@
-import type { Note } from "@josh-notepad/types";
+import type { NoteSerialized } from "@josh-notepad/types";
+import { ReadOnlyEditor } from "../NoteReadOnly/NoteReadOnly";
 
 export const ListOfNotes = ({
   notes,
   setCurrentNoteId,
 }: {
-  notes: Record<string, Note>;
+  notes: Record<string, NoteSerialized>;
   setCurrentNoteId: (id: string) => void;
 }) => {
   return (
@@ -18,7 +19,7 @@ export const ListOfNotes = ({
           >
             <div className="flex flex-col border-comment rounded-lg border">
               <p>{note.title}</p>
-              <p>{note.content}</p>
+              <ReadOnlyEditor editorState={note.content} />
             </div>
           </button>
         );
