@@ -64,7 +64,7 @@ export const NoteEditor = ({
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <div className="border border-purple p-2 m-2 rounded-md">
+      <div>
         <RichTextPlugin
           contentEditable={<ContentEditable className="outline-none" />}
           ErrorBoundary={LexicalErrorBoundary}

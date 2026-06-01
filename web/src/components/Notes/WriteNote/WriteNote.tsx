@@ -9,6 +9,7 @@ export const WriteNote = ({
 }: {
   note: NoteSerialized;
   // pass in a key too when using WriteNote
+  key: string;
 }) => {
   const [title, setTitle] = useState(note.title);
   const formData = useRef({ content: note.content });
@@ -45,7 +46,7 @@ export const WriteNote = ({
       <input
         value={title}
         onChange={handleTitleChange}
-        className="text-green border-comment rounded-sm border"
+        className="text-green underline text-lg"
       />
       <NoteEditor
         initialEditorState={note.content}
