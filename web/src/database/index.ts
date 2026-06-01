@@ -1,15 +1,17 @@
+import type { SerializedEditorState } from "lexical";
 import type { NoteSerialized } from "@josh-notepad/types";
 
 const BASE_URL = "http://localhost:3001";
 
 export const getNotes = async (): Promise<NoteSerialized[]> => {
   const res = await fetch(`${BASE_URL}/notes`);
-  return res.json();
+  const data: { notes: NoteSerialized[] } = await res.json();
+  return data.notes;
 };
 
 export const createNote = async (
   title: string,
-  content: string,
+  content: SerializedEditorState,
 ): Promise<NoteSerialized> => {
   const res = await fetch(`${BASE_URL}/notes`, {
     method: "POST",

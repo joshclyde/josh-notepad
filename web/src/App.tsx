@@ -6,6 +6,27 @@ import { getNotes, createNote } from "./database";
 import { type NoteSerialized } from "@josh-notepad/types";
 import { WriteNote } from "./components/WriteNote/WriteNote";
 import { NoteEditor } from "./components/NoteEditor/NoteEditor";
+import type { SerializedEditorState } from "lexical";
+
+const EMPTY_EDITOR_STATE: SerializedEditorState = {
+  root: {
+    children: [
+      {
+        children: [],
+        direction: null,
+        format: "",
+        indent: 0,
+        type: "paragraph",
+        version: 1,
+      },
+    ],
+    direction: null,
+    format: "",
+    indent: 0,
+    type: "root",
+    version: 1,
+  },
+};
 
 export const App = () => {
   const [currentNoteId, setCurrentNoteId] = useState<string | undefined>(
@@ -30,7 +51,7 @@ export const App = () => {
 
   const handleAddNewNote = async () => {
     setCreatingNewNote(true);
-    const newNote = await createNote("Untitled", "Body of note.");
+    const newNote = await createNote("Untitled", EMPTY_EDITOR_STATE);
     setNotes((prev) => ({ ...prev, [newNote.id]: newNote }));
     setCurrentNoteId(newNote.id);
     setNoteView("read");
