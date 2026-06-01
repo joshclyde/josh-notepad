@@ -1,7 +1,7 @@
 import type { NoteSerialized } from "@josh-notepad/types";
 import type { EditorState } from "lexical";
 import { useRef, useState } from "react";
-import { updateNote } from "../../database";
+import { updateNote } from "../../../database";
 import { NoteEditor } from "../NoteEditor/NoteEditor";
 
 export const WriteNote = ({

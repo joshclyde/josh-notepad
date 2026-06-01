@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { ListOfNotes } from "./components/ListOfNotes/ListOfNotes";
-import { ReadNote } from "./components/ReadNote/ReadNote";
-import { getNotes, createNote } from "./database";
+import { ListOfNotes } from "../Notes/ListOfNotes/ListOfNotes";
+import { ReadNote } from "../Notes/ReadNote/ReadNote";
+import { getNotes, createNote } from "../../database";
 import { type NoteSerialized } from "@josh-notepad/types";
-import { WriteNote } from "./components/WriteNote/WriteNote";
-import { NoteEditor } from "./components/NoteEditor/NoteEditor";
+import { WriteNote } from "../Notes/WriteNote/WriteNote";
+import { NoteEditor } from "../Notes/NoteEditor/NoteEditor";
 import type { SerializedEditorState } from "lexical";
 
 const EMPTY_EDITOR_STATE: SerializedEditorState = {
