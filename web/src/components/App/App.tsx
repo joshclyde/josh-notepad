@@ -5,7 +5,6 @@ import { ReadNote } from "../Notes/ReadNote/ReadNote";
 import { getNotes, createNote } from "../../database";
 import { type NoteSerialized } from "@josh-notepad/types";
 import { WriteNote } from "../Notes/WriteNote/WriteNote";
-import { NoteEditor } from "../Notes/NoteEditor/NoteEditor";
 import type { SerializedEditorState } from "lexical";
 
 const EMPTY_EDITOR_STATE: SerializedEditorState = {
@@ -37,7 +36,6 @@ export const App = () => {
     undefined | Record<string, NoteSerialized>
   >(undefined);
 
-  const [view, setView] = useState<"home" | "editor">("home");
   const [noteView, setNoteView] = useState<"read" | "write">("read");
 
   useEffect(() => {
@@ -68,16 +66,11 @@ export const App = () => {
     return <div>Creating new note.</div>;
   }
 
-  if (view === "editor") {
-    return <NoteEditor />;
-  }
-
   return (
     <>
       {!currentNoteId ? (
         <div>
           <button onClick={handleAddNewNote}>Add new note</button>
-          <button onClick={() => setView("editor")}>Look at editor</button>
           <ListOfNotes notes={notes} setCurrentNoteId={setCurrentNoteId} />
         </div>
       ) : null}
